@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Header</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{text-decoration:none}
+</style>
+</helmet>
+<div style="width:100%;background:#FAF9FD;font-family:'DM Sans',sans-serif">
+<div style="max-width:1296px;margin:0 auto;padding:22px 32px;box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+<a href="{{home}}" aria-label="tako by Techne" style="display:block"><div style="display:flex;align-items:center;gap:10px"><svg width="46" height="39" viewBox="250 195 745 630" aria-hidden="true" style="flex:none"><defs><clipPath id="hm"><polygon points="729,190 1000,190 1000,460 482,460"/></clipPath></defs><rect x="255" y="200" width="465" height="255" rx="127" fill="#2A2968"/><rect x="465" y="330" width="245" height="490" rx="122" fill="#FF3D58"/><g clip-path="url(#hm)"><rect x="480" y="200" width="510" height="250" rx="125" fill="#FF3D58"/></g><path d="M467 520C470 480 520 456 575 455L708 455C600 500 500 560 468 640Z" fill="#C21F4C" opacity=".8"/></svg><div style="display:flex;flex-direction:column;line-height:1"><span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.04em;color:#2A2968">tako</span><span style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:11px;letter-spacing:.3em;color:#2A2968;padding-top:3px">BY TECHNE</span></div></div></a>
+<nav style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 28px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500">
+<a href="{{features}}" style="color:{{cF}};font-weight:{{wF}}">{{tFeatures}}</a>
+<a href="{{pricing}}" style="color:{{cP}};font-weight:{{wP}}">{{tPricing}}</a>
+<a href="{{demo}}" style="color:{{cD}};font-weight:{{wD}}">{{tDemo}}</a>
+</nav>
+<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:2px;background:#F0EFF9;border-radius:999px;padding:4px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600">
+<a href="{{hrefTR}}" lang="tr" style="padding:8px 14px;border-radius:999px;min-width:44px;box-sizing:border-box;text-align:center;{{stTR}}">TR</a>
+<a href="{{hrefEN}}" lang="en" style="padding:8px 14px;border-radius:999px;min-width:44px;box-sizing:border-box;text-align:center;{{stEN}}">EN</a></div>
+<a href="{{demo}}" style="background:#CD405E;color:#fff;font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;min-height:48px;padding:0 24px;box-sizing:border-box;border-radius:999px;display:inline-flex;align-items:center;white-space:nowrap">{{tCta}}</a>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"lang":{"editor":null},"page":{"editor":null},"$preview":{"width":1360,"height":92}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const lang = String(this.props.lang || 'en').toLowerCase();
+    const page = this.props.page || 'Home';
+    const tr = lang === 'tr';
+    const f = (p, l) => (p === 'Home' && l === 'tr') ? './Main.dc.html' : './' + p + '-' + l.toUpperCase() + '.dc.html';
+    const on = (p) => page === p;
+    const navy = '#2A2968', body = '#47466F';
+    const act = 'background:#fff;color:#2A2968;box-shadow:0 2px 8px rgba(42,41,104,.15)';
+    const idle = 'color:#47466F';
+    return {
+      home: f('Home', lang), features: f('Features', lang), pricing: f('Pricing', lang), demo: f('Demo', lang),
+      hrefTR: f(page, 'tr'), hrefEN: f(page, 'en'),
+      tFeatures: tr ? 'Özellikler' : 'Features', tPricing: tr ? 'Fiyatlandırma' : 'Pricing', tDemo: 'Demo',
+      tCta: tr ? 'Ücretsiz demoyu başlat' : 'Start free demo',
+      cF: on('Features') ? navy : body, cP: on('Pricing') ? navy : body, cD: on('Demo') ? navy : body,
+      wF: on('Features') ? 700 : 500, wP: on('Pricing') ? 700 : 500, wD: on('Demo') ? 700 : 500,
+      stTR: tr ? act : idle, stEN: tr ? idle : act
+    };
+  }
+}
+</script>
+</body>
+</html>

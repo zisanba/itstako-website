@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Octopus mascot</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{text-decoration:none}
+</style>
+</helmet>
+<svg viewBox="0 0 200 200" aria-hidden="true" style="display:block;width:100%;height:auto">
+<g fill="none" stroke="{{body}}" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+<path d="M56 126C34 146 24 168 38 180C48 188 62 180 56 170"/>
+<path d="M80 140C70 164 74 184 90 184C100 184 100 172 92 170"/>
+<path d="M120 140C130 164 126 184 110 184C100 184 100 172 108 170"/>
+<path d="M144 126C166 146 176 168 162 180C152 188 138 180 144 170"/>
+</g>
+<ellipse cx="100" cy="86" rx="66" ry="64" fill="{{body}}"/>
+<circle cx="72" cy="42" r="5" fill="#F0EFF9" opacity=".22"/><circle cx="88" cy="32" r="3.5" fill="#F0EFF9" opacity=".22"/><circle cx="128" cy="44" r="5" fill="#F0EFF9" opacity=".22"/>
+<circle cx="78" cy="88" r="15" fill="#fff"/><circle cx="122" cy="88" r="15" fill="#fff"/>
+<circle cx="81" cy="91" r="7.5" fill="#2A2968"/><circle cx="125" cy="91" r="7.5" fill="#2A2968"/>
+<circle cx="84" cy="88" r="2.6" fill="#fff"/><circle cx="128" cy="88" r="2.6" fill="#fff"/>
+<circle cx="56" cy="110" r="8" fill="{{cheek}}" opacity=".9"/><circle cx="144" cy="110" r="8" fill="{{cheek}}" opacity=".9"/>
+<path d="M88 110Q100 122 112 110" fill="none" stroke="{{mouth}}" stroke-width="5" stroke-linecap="round"/>
+</svg>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"body":{"editor":"color","default":"#2A2968"},"cheek":{"editor":"color","default":"#FF4A5F"},"mouth":{"editor":"color","default":"#FF6B7F"},"$preview":{"width":240,"height":240}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { body: this.props.body ?? '#2A2968', cheek: this.props.cheek ?? '#FF4A5F', mouth: this.props.mouth ?? '#FF6B7F' };
+  }
+}
+</script>
+</body>
+</html>
